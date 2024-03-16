@@ -10,6 +10,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import ClassroomDetail from './Components/ClassroomDetail'
+import ExamDetails from './Components/ExamDetails'
+import ExamPage from './Components/Exampage'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -26,6 +28,11 @@ function App() {
       exact
       path="/classroom"
       element={<ClassroomDetail />}
+                    />
+                    <Route
+      exact
+      path="/exam"
+      element={<ExamDetails />}
                     />
                     
     </Routes>
