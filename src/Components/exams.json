@@ -1,0 +1,21 @@
+[
+    { 
+      "id": 1, 
+      "name": "Exam 1", 
+      "subject": "Series Test", 
+      "students": [
+        { "name": "Student 1", "rollNumber": 101 },
+        { "name": "Student 2", "rollNumber": 102 }
+      ]
+    },
+    { 
+      "id": 2, 
+      "name": "Exam 2", 
+      "subject": "Viva", 
+      "students": [
+        { "name": "Student 3", "rollNumber": 103 },
+        { "name": "Student 4", "rollNumber": 104 }
+      ]
+    }
+  ]
+  
