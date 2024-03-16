@@ -90,12 +90,25 @@ function ClassroomDetail() {
                 Create Exam
             </button>
             <div className="mt-4">
-          <h2>Extracted Students:</h2>
-          <ul>
-            {students.map((student, index) => (
-              <li key={index}>{student.name} - {student.rollNumber}</li>
-            ))}
-          </ul>
+            <div className="container mx-auto">
+      <h2 className="text-2xl font-bold mb-4">Students List:</h2>
+      <table className="min-w-full">
+        <thead>
+          <tr>
+            <th className="text-left">Student Name</th>
+            <th className="text-left">Roll Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student, index) => (
+            <tr key={index}>
+              <td className="border border-gray-300 px-4 py-2">{student.name}</td>
+              <td className="border border-gray-300 px-4 py-2">{student.rollNumber}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
         </div>
         </div>
     );
