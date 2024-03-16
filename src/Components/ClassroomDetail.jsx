@@ -36,7 +36,7 @@ function ClassroomDetail() {
     };
 
     const location = useLocation();
-    const { classname, subject } = location.state;
+    const { classname, subject,students } = location.state;
 
     return (
         <div className="container mx-auto">
@@ -89,6 +89,14 @@ function ClassroomDetail() {
             >
                 Create Exam
             </button>
+            <div className="mt-4">
+          <h2>Extracted Students:</h2>
+          <ul>
+            {students.map((student, index) => (
+              <li key={index}>{student.name} - {student.rollNumber}</li>
+            ))}
+          </ul>
+        </div>
         </div>
     );
 }
