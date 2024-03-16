@@ -12,6 +12,7 @@ import {
 import ClassroomDetail from './Components/ClassroomDetail'
 import ExamDetails from './Components/ExamDetails'
 import ExamPage from './Components/Exampage'
+import Student from './Components/Student'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,16 +25,22 @@ function App() {
       path="/"
       element={<Teacher />}
                     />
-                        <Route
+    <Route
       exact
       path="/classroom"
       element={<ClassroomDetail />}
                     />
-                    <Route
+    <Route
       exact
       path="/exam"
       element={<ExamDetails />}
                     />
+      <Route
+      exact
+      path="/student"
+      element={<Student />}
+                    />
+    
                     
     </Routes>
    </Router>
