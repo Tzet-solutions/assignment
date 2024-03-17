@@ -9,19 +9,11 @@ const Student = () => {
       id: 1,
       name: "Classroom 1",
       subject: "Math",
-      students: [
-        { name: "Student 1", rollNumber: 101 },
-        { name: "Student 2", rollNumber: 102 }
-      ]
     },
     {
       id: 2,
       name: "Classroom 2",
       subject: "Science",
-      students: [
-        { name: "Student 3", rollNumber: 103 },
-        { name: "Student 4", rollNumber: 104 }
-      ]
     }
   ];
 
