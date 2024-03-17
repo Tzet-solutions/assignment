@@ -14,6 +14,7 @@ import ExamDetails from './Components/ExamDetails'
 import ExamPage from './Components/Exampage'
 import Student from './Components/Student'
 import StudentExam from './Components/StudentExam'
+import Quiz from './Components/Quiz'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -45,7 +46,12 @@ function App() {
       exact
       path="/studentexam"
       element={<StudentExam />}
-                    />    
+                    />   
+                         <Route
+      exact
+      path="/quiz"
+      element={<Quiz />}
+                    />     
                     
     </Routes>
    </Router>
