@@ -28,7 +28,7 @@ function StudentExam() {
                     {exams.map((exam) => (
                         <div key={exam.id} className={`max-w-sm rounded overflow-hidden shadow-lg m-4 ${exam.examStatus === 'completed' ? 'bg-green-200' : 'bg-red-200'}`}>
                             {exam.examStatus === 'pending' ? (
-                                <Link to={`/quiz`} className="block cursor-pointer">
+                                <Link to={`/quiz/${exam.id}`} className="block cursor-pointer">
                                     <div className="px-6 py-4">
                                         <div className="font-bold text-xl mb-2">{exam.name}</div>
                                         <p className="text-gray-700 text-base">Subject: {exam.subject}</p>
