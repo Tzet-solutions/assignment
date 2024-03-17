@@ -14,6 +14,7 @@ import ExamDetails from './Components/ExamDetails'
 import ExamPage from './Components/Exampage'
 import Student from './Components/Student'
 import StudentExam from './Components/StudentExam'
+import Quiz from './Components/Quiz'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -56,6 +57,7 @@ function App() {
             <Route exact path="/classroom" element={<ClassroomDetail />} />
             <Route exact path="/exam" element={<ExamDetails />} />
             <Route exact path="/studentexam" element={<StudentExam />} />
+            <Route exact path="/quiz" element={<Quiz />} />
           </Routes>
         </Router>
       ) : (
