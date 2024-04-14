@@ -8,6 +8,7 @@ const Teacher = () => {
   const [classrooms, setClassrooms] = useState([]);
   const [formData, setFormData] = useState({ className: '', subject: '', studentsFile: null });
   const [extractedStudents, setExtractedStudents] = useState([]);
+  const [editingClassroomId, setEditingClassroomId] = useState(null);
 
   useEffect(() => {
     setClassrooms(classroomsData);
@@ -19,7 +20,7 @@ const Teacher = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData({ ...formData, [name]:files?files[0]:value });
+    setFormData({ ...formData, [name]: files ? files[0] : value });
   };
 
   const handleFileUpload = () => {
@@ -58,6 +59,38 @@ const Teacher = () => {
     setShowComponent(false);
     setFormData({ className: '', subject: '', studentsFile: null });
     setExtractedStudents([]); // Clear extractedStudents after submission
+  };
+
+  // Function to handle editing of classroom
+  const handleEditClassroom = (classroomId) => {
+    setEditingClassroomId(classroomId);
+    const classroomToEdit = classrooms.find(classroom => classroom.id === classroomId);
+    setFormData({ className: classroomToEdit.name, subject: classroomToEdit.subject });
+  };
+
+  // Function to save edited classroom
+  const handleSaveEdit = () => {
+    setClassrooms(classrooms.map(classroom => {
+      if (classroom.id === editingClassroomId) {
+        return {
+          ...classroom,
+          name: formData.className || classroom.name,
+          subject: formData.subject || classroom.subject
+        };
+      }
+      return classroom;
+    }));
+    setEditingClassroomId(null); // Exit edit mode
+  };
+
+  // Function to cancel editing
+  const handleCancelEdit = () => {
+    setEditingClassroomId(null); // Exit edit mode
+  };
+
+  // Function to handle deleting a classroom
+  const handleDeleteClassroom = (classroomId) => {
+    setClassrooms(classrooms.filter(classroom => classroom.id !== classroomId));
   };
 
   return (
@@ -103,7 +136,7 @@ const Teacher = () => {
       </div>
     </Link>
   </div>
-))}
+))} 
         
         {showComponent &&
           <div className="bg-white rounded-lg shadow-md p-6">
@@ -124,6 +157,26 @@ const Teacher = () => {
             </form>
           </div>
         }
+
+        {/* Form for editing classroom */}
+        {editingClassroomId && (
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <form onSubmit={(e) => { e.preventDefault(); handleSaveEdit(); }}>
+              <div className="mb-4">
+                <label htmlFor="editClassName" className="block text-gray-700 font-bold mb-2">New Class Name:</label>
+                <input type="text" id="editClassName" name="editClassName" value={formData.className} onChange={handleChange} className="border border-gray-400 rounded px-3 py-2 w-full" />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="editSubject" className="block text-gray-700 font-bold mb-2">New Subject:</label>
+                <input type="text" id="editSubject" name="editSubject" value={formData.subject} onChange={handleChange} className="border border-gray-400 rounded px-3 py-2 w-full" />
+              </div>
+              <div className="flex justify-between">
+                <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleCancelEdit}>Cancel</button>
+                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save</button>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
       <button
         className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
