@@ -65,26 +65,45 @@ const Teacher = () => {
       <h1 className="text-2xl font-bold mb-4">Teacher Component</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       
-        {classrooms.map(classroom => (
-          <Link key={classroom.id} to="/classroom" state={{ classname: classroom.name, subject: classroom.subject,students:extractedStudents }}>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-lg font-semibold mb-2">{classroom.name}</h2>
-              <p className="text-gray-600 mb-2">Subject: {classroom.subject}</p>
-              <p className="text-gray-600">Number of Students: {classroom.students.length}</p>
-              {classroom.showMore && (
-                <div>
-                  {/* Additional details to show */}
-                </div>
-              )}
-              <button
-                className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => handleShowMore(classroom.id)}
-              >
-                {classroom.showMore ? 'Show Less' : 'Show More'}
-              </button>
-            </div>
-          </Link>
-        ))}
+      {classrooms.map(classroom => (
+  <div key={classroom.id} className="relative">
+    {/* Three-dot button for edit and delete options */}
+    <div className="absolute top-0 left-0 z-10">
+      <div className="relative group">
+        <button className="bg-gray-200 p-2 rounded-full focus:outline-none">
+          <svg className="h-6 w-6 text-gray-600 group-hover:text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+        <ul className="absolute hidden group-hover:block bg-white text-gray-700 py-1 rounded shadow-md">
+          {/* Option to edit classroom */}
+          <li className="cursor-pointer" onClick={() => handleEditClassroom(classroom.id)}>Edit</li>
+          {/* Option to delete classroom */}
+          <li className="cursor-pointer" onClick={() => handleDeleteClassroom(classroom.id)}>Delete</li>
+        </ul>
+      </div>
+    </div>
+    {/* Classroom card */}
+    <Link to="/classroom" state={{ classname: classroom.name, subject: classroom.subject, students: extractedStudents }}>
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-lg font-semibold mb-2">{classroom.name}</h2>
+        <p className="text-gray-600 mb-2">Subject: {classroom.subject}</p>
+        <p className="text-gray-600">Number of Students: {classroom.students.length}</p>
+        {classroom.showMore && (
+          <div>
+            {/* Additional details to show */}
+          </div>
+        )}
+        <button
+          className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={() => handleShowMore(classroom.id)}
+        >
+          {classroom.showMore ? 'Show Less' : 'Show More'}
+        </button>
+      </div>
+    </Link>
+  </div>
+))}
         
         {showComponent &&
           <div className="bg-white rounded-lg shadow-md p-6">
