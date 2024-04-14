@@ -1,7 +1,7 @@
 [
     { 
       "id": 1, 
-      "name": "Exam 1", 
+      "name": "MCQ Test", 
       "subject": "Series Test", 
       "students": [
         { "name": "Student 1", "rollNumber": 101 },
@@ -10,7 +10,7 @@
     },
     { 
       "id": 2, 
-      "name": "Exam 2", 
+      "name": "Subjective Test", 
       "subject": "Viva", 
       "students": [
         { "name": "Student 3", "rollNumber": 103 },

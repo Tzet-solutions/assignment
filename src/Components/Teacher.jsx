@@ -20,9 +20,11 @@ const Teacher = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData({ ...formData, [name]: files ? files[0] : value });
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: files ? files[0] : value
+    }));
   };
-
   const handleFileUpload = () => {
     const reader = new FileReader();
     reader.onload = (event) => {
