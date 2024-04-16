@@ -75,7 +75,7 @@ function ClassroomDetail() {
                                 <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} className="border border-gray-400 rounded px-3 py-2 w-full" />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="students" className="block text-gray-700 font-bold mb-2">Students (Upload .csv file):</label>
+                                <label htmlFor="students" className="block text-gray-700 font-bold mb-2">Students (Upload .xls file):</label>
                                 <input type="file" id="students" name="students" multiple onChange={handleChange} className="border border-gray-400 rounded px-3 py-2 w-full" />
                             </div>
                             <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Exam</button>
@@ -95,6 +95,8 @@ function ClassroomDetail() {
       <table className="min-w-full">
         <thead>
           <tr>
+          <th className="text-left">Sl No</th>
+            
             <th className="text-left">Student Name</th>
             <th className="text-left">Roll Number</th>
           </tr>
@@ -102,6 +104,7 @@ function ClassroomDetail() {
         <tbody>
           {students.map((student, index) => (
             <tr key={index}>
+                <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
               <td className="border border-gray-300 px-4 py-2">{student.name}</td>
               <td className="border border-gray-300 px-4 py-2">{student.rollNumber}</td>
             </tr>
